@@ -15,7 +15,8 @@ const defaultTasks = [
           completed: false,
           priority: "High",
           category: "Work",
-          createdAt: new Date().toISOString()
+          createdAt: new Date().toISOString(),
+          dueDate: new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString().split('T')[0] // Tomorrow
         },
         {
           Id: 2,
@@ -23,7 +24,8 @@ const defaultTasks = [
           completed: false,
           priority: "Medium",
           category: "Work",
-          createdAt: new Date().toISOString()
+          createdAt: new Date().toISOString(),
+          dueDate: new Date().toISOString().split('T')[0] // Today
         },
         {
           Id: 3,
@@ -31,7 +33,8 @@ const defaultTasks = [
           completed: true,
           priority: "Low",
           category: "Work",
-          createdAt: new Date().toISOString()
+          createdAt: new Date().toISOString(),
+          dueDate: new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString().split('T')[0] // Yesterday (overdue)
         }
       ];
       localStorage.setItem(this.storageKey, JSON.stringify(defaultTasks));
@@ -69,7 +72,8 @@ const newTask = {
           completed: false,
           priority: taskData.priority || "Medium",
           category: taskData.category || "Personal",
-          createdAt: new Date().toISOString()
+          createdAt: new Date().toISOString(),
+          dueDate: taskData.dueDate || null
         };
         
         tasks.push(newTask);

@@ -8,21 +8,23 @@ const TaskInput = ({ onAddTask, disabled = false }) => {
   const [taskText, setTaskText] = useState('');
   const [priority, setPriority] = useState('Medium');
   const [category, setCategory] = useState('Personal');
-
+  const [dueDate, setDueDate] = useState('');
   const priorities = ['High', 'Medium', 'Low'];
   const categories = ['Work', 'Personal', 'Shopping', 'Health'];
 
-  const handleSubmit = (e) => {
+const handleSubmit = (e) => {
     e.preventDefault();
     if (taskText.trim() && !disabled) {
       onAddTask({
         text: taskText.trim(),
         priority,
-        category
+        category,
+        dueDate: dueDate || null
       });
       setTaskText('');
       setPriority('Medium');
       setCategory('Personal');
+      setDueDate('');
     }
   };
 
@@ -52,7 +54,7 @@ const TaskInput = ({ onAddTask, disabled = false }) => {
             />
           </div>
           
-          <select
+<select
             value={priority}
             onChange={(e) => setPriority(e.target.value)}
             disabled={disabled}
@@ -62,6 +64,15 @@ const TaskInput = ({ onAddTask, disabled = false }) => {
               <option key={p} value={p}>{p} Priority</option>
             ))}
           </select>
+          
+          <input
+            type="date"
+            value={dueDate}
+            onChange={(e) => setDueDate(e.target.value)}
+            disabled={disabled}
+            className="px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+            title="Due date"
+          />
         </div>
         
         <div className="flex flex-wrap gap-2">
