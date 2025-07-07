@@ -24,7 +24,7 @@ const TaskList = ({
     return <Empty />;
   }
 
-  const completedTasks = tasks.filter(task => task.completed);
+const completedTasks = tasks.filter(task => task.completed);
   const incompleteTasks = tasks.filter(task => !task.completed);
 
   return (

@@ -8,23 +8,29 @@ class TaskService {
 
   initializeStorage() {
     if (!localStorage.getItem(this.storageKey)) {
-      const defaultTasks = [
+const defaultTasks = [
         {
           Id: 1,
           text: "Complete project presentation",
           completed: false,
+          priority: "High",
+          category: "Work",
           createdAt: new Date().toISOString()
         },
         {
           Id: 2,
           text: "Review team feedback",
           completed: false,
+          priority: "Medium",
+          category: "Work",
           createdAt: new Date().toISOString()
         },
         {
           Id: 3,
           text: "Update project documentation",
           completed: true,
+          priority: "Low",
+          category: "Work",
           createdAt: new Date().toISOString()
         }
       ];
@@ -57,10 +63,12 @@ class TaskService {
         const tasks = JSON.parse(localStorage.getItem(this.storageKey)) || [];
         const newId = Math.max(...tasks.map(t => t.Id), 0) + 1;
         
-        const newTask = {
+const newTask = {
           Id: newId,
           text: taskData.text,
           completed: false,
+          priority: taskData.priority || "Medium",
+          category: taskData.category || "Personal",
           createdAt: new Date().toISOString()
         };
         
