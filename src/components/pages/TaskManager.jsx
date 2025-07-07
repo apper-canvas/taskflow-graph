@@ -31,11 +31,12 @@ const [tasks, setTasks] = useState([]);
           aValue = a.dueDate ? new Date(a.dueDate).getTime() : Infinity;
           bValue = b.dueDate ? new Date(b.dueDate).getTime() : Infinity;
           break;
-        case 'Priority':
+case 'Priority': {
           const priorityOrder = { 'High': 3, 'Medium': 2, 'Low': 1 };
           aValue = priorityOrder[a.priority] || 0;
           bValue = priorityOrder[b.priority] || 0;
           break;
+        }
         case 'Date Added':
           aValue = new Date(a.createdAt).getTime();
           bValue = new Date(b.createdAt).getTime();
