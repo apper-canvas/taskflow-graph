@@ -17,12 +17,12 @@ const TaskCard = ({ task, onToggleComplete, onDeleteTask }) => {
     <motion.div
       layout
       initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
+animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -20 }}
       whileHover={{ scale: 1.01 }}
       className={cn(
-        "bg-white p-4 rounded-lg shadow-card transition-all duration-200 hover:shadow-elevation group",
-        task.completed && "task-completed"
+        "bg-white p-4 rounded-lg shadow-card transition-all duration-300 hover:shadow-elevation group",
+        task.completed && "bg-gray-50 border border-gray-200"
       )}
     >
       <div className="flex items-center space-x-3">
@@ -45,16 +45,17 @@ const TaskCard = ({ task, onToggleComplete, onDeleteTask }) => {
           <p className="text-xs text-gray-500 mt-1">
             {new Date(task.createdAt).toLocaleDateString()}
           </p>
-        </div>
+</div>
         
         <div className="flex-shrink-0 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
           <Button
             variant="ghost"
             size="sm"
             onClick={handleDelete}
-            className="p-1 hover:bg-red-50 hover:text-red-600"
+            className="p-1.5 hover:bg-red-50 hover:text-red-600 transition-colors duration-200 rounded-md"
+            title="Delete task"
           >
-            <ApperIcon name="Trash2" className="w-4 h-4" />
+            <ApperIcon name="X" className="w-4 h-4" />
           </Button>
         </div>
       </div>

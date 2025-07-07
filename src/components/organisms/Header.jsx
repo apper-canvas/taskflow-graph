@@ -20,13 +20,13 @@ const Header = ({ taskCount = 0, completedCount = 0 }) => {
           </p>
         </div>
         
-        <div className="flex items-center space-x-6">
+<div className="flex items-center space-x-6">
           <div className="text-center">
-            <div className="text-2xl font-bold text-gray-900">
-              {taskCount}
+            <div className="text-2xl font-bold text-primary">
+              {taskCount - completedCount}
             </div>
             <div className="text-sm text-gray-600">
-              Total Tasks
+              Active Tasks
             </div>
           </div>
           

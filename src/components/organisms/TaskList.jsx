@@ -35,14 +35,13 @@ const TaskList = ({
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           className="space-y-3"
-        >
+>
           <h3 className="text-lg font-semibold text-gray-900 flex items-center space-x-2">
             <span>Active Tasks</span>
-            <span className="bg-primary text-white text-xs px-2 py-1 rounded-full">
-              {incompleteTasks.length}
+            <span className="bg-primary text-white text-xs px-2.5 py-1 rounded-full font-medium">
+              {incompleteTasks.length} remaining
             </span>
           </h3>
-          
           <AnimatePresence>
             {incompleteTasks.map(task => (
               <TaskCard
