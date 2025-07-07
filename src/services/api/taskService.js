@@ -125,6 +125,27 @@ const newTask = {
           resolve(null);
         }
       }, 200);
+});
+  }
+
+  async clearCompleted() {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        const tasks = JSON.parse(localStorage.getItem(this.storageKey)) || [];
+        const activeTasks = tasks.filter(t => !t.completed);
+        localStorage.setItem(this.storageKey, JSON.stringify(activeTasks));
+        resolve(true);
+      }, 200);
+    });
+  }
+
+  async reorderTasks(reorderedTasks) {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        // Update the storage with the new order
+        localStorage.setItem(this.storageKey, JSON.stringify(reorderedTasks));
+        resolve([...reorderedTasks]);
+      }, 200);
     });
   }
 }
